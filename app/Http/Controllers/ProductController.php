@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Psy\CodeCleaner\FunctionContextPass;
 
 class ProductController extends Controller
-{   
+{
 
     // show explore product
     // public function explore()
@@ -27,12 +27,12 @@ class ProductController extends Controller
         $products = Product::latest()->take(5)->get();
         return view('index', ['products' => $products, 'search' =>'']);
     }
-    
+
 // explore page
     public function explore(Request $request) {
         $searchTerm = $request->input('search');
         $searchTerm2 = $request->input('search2');
-        
+
         $products = Product::where(function ($query) use ($searchTerm, $searchTerm2) {
             $query->where(function ($query) use ($searchTerm) {
                 $query->where('title_service', 'like', '%' . $searchTerm . '%')
@@ -42,20 +42,40 @@ class ProductController extends Controller
             ->where('kota', 'like', '%' . $searchTerm2 . '%');
         })
         ->get();
-        
+
         return view('explore', ['products' => $products, 'search' => $searchTerm, 'search2' => $searchTerm2]);
     }
-    
-    
-    
+
+    // search page
+    public function search(Request $request) {
+        $searchTerm = $request->input('search');
+        $searchTerm2 = $request->input('search2');
+
+        $products = Product::where(function ($query) use ($searchTerm, $searchTerm2) {
+            $query->where(function ($query) use ($searchTerm) {
+                $query->where('title_service', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('service_description', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('service_category', 'like', '%' . $searchTerm . '%');
+            })
+            ->where('kota', 'like', '%' . $searchTerm2 . '%');
+        })
+        ->get();
+
+        return view('search', ['products' => $products, 'search' => $searchTerm, 'search2' => $searchTerm2]);
+    }
+
+
+
+
+
 
     // create product
     public function create(Request $request){
         $image = $request->file('image');
-    
+
         return view('befreelancer');
     }
-    
+
 
     // store product data
     public function store(Request $request)
@@ -90,17 +110,17 @@ class ProductController extends Controller
         $imagePath = $request->file('image')->store('public/images');
         $product->image = str_replace('public/images/', '', $imagePath);
     }
-    
+
     if ($request->hasFile('image2')) {
         $imagePath2 = $request->file('image2')->store('public/images');
         $product->image2 = str_replace('public/images/', '', $imagePath2);
     }
-    
+
     if ($request->hasFile('image3')) {
         $imagePath3 = $request->file('image3')->store('public/images');
         $product->image3 = str_replace('public/images/', '', $imagePath3);
     }
-    
+
     if ($request->hasFile('image4')) {
         $imagePath4 = $request->file('image4')->store('public/images');
         $product->image4 = str_replace('public/images/', '', $imagePath4);
@@ -112,6 +132,10 @@ class ProductController extends Controller
 }
 
 
+    // detail template
+    public function detail(Product $product){
+        return view('detail-service');
+    }
 
     // show product
     public function show(Product $product)
@@ -221,7 +245,7 @@ class ProductController extends Controller
             'price' => 'required|integer',
             // 'image' => 'nullable|image|max:2048',
         ]);
-    
+
         $product->user_id = $request->user_id;
         $product->title_service = $request->title_service;
         $product->service_method = $request->service_method;
@@ -240,29 +264,29 @@ class ProductController extends Controller
         $product->package_des2 = $request->package_des2;
         $product->package_des3 = $request->package_des3;
         $product->service_category = $request->service_category;
-    
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images');
             $product->image = str_replace('public/images/', '', $imagePath);
         }
-        
+
         if ($request->hasFile('image2')) {
             $imagePath2 = $request->file('image2')->store('public/images');
             $product->image2 = str_replace('public/images/', '', $imagePath2);
         }
-        
+
         if ($request->hasFile('image3')) {
             $imagePath3 = $request->file('image3')->store('public/images');
             $product->image3 = str_replace('public/images/', '', $imagePath3);
         }
-        
+
         if ($request->hasFile('image4')) {
             $imagePath4 = $request->file('image4')->store('public/images');
             $product->image4 = str_replace('public/images/', '', $imagePath4);
         }
-    
+
         $product->save();
-    
+
         return redirect()->route('profile')->with('success', 'Product created successfully.');
     }
 
@@ -272,17 +296,18 @@ class ProductController extends Controller
         return redirect('/manage')->with('message', 'Listing Deleted Succesfully');
     }
 
+    // sort and search
     public function sort(Request $request)
     {
         $sortBy = $request->input('sort');
         $searchTerm = $request->input('search');
         $search2Term = $request->input('search2');
-        
+
         $query = Product::where(function ($query) use ($searchTerm, $search2Term) {
             $query->where('title_service', 'like', '%' . $searchTerm . '%')
                 ->orWhere('service_description', 'like', '%' . $searchTerm . '%')
                 ->orWhere('service_category', 'like', '%' . $searchTerm . '%');
-            
+
             if ($search2Term) {
                 $query->where('kota', 'like', '%' . $search2Term . '%');
             }
@@ -308,9 +333,12 @@ class ProductController extends Controller
         }
 
         $products = $query->get();
-        
+
         return view('explore', ['products' => $products, 'search' => $searchTerm, 'search2' => $search2Term, 'sort' => $sortBy]);
     }
 
-
+    // tailwind Test
+    public function tailwind(){
+        return view('tailwindtest');
+    }
 }

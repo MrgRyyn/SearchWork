@@ -1,8 +1,9 @@
 <div id="product2" class="section-p1">
+    
     <div class="pro-container">
                 @unless(count($products) == 0)
                     @foreach($products as $product)
-                    <div class="pro-card item {{$product->service_category}}">
+                    <div class="pro-card item {{$product->service_category}} hover:shadow-xl">
                         <a href="{{ route('service-detail', $product->id) }}">
                         <div class="product-image">
                             <img src="{{asset('storage/images/'.$product->image)}}" >
@@ -35,7 +36,7 @@
                                     @else
                                     <a href="{{ route('login') }}" class="btn btn-success font-size-12"><img src="img/small cart.png" alt="small cart"></a>
                                     @endauth
-                                </form>                                
+                                </form>
                             </div>
                             <div class="product-price">
                                 <h3>Start at</h3>
@@ -45,9 +46,9 @@
                         </a>
                     </div>
                     @endforeach
-                    @else 
+                    @else
                     <p>No service found</p>
                 @endunless
-             </div>             
+             </div>
 </div>
 

@@ -19,7 +19,7 @@
         </div>
         <div class="foot-category-bawah">
             <h3>Categories</h3>
-            <a href="/explore"><h4>Graphic & Design</h4></a>
+            <a href="/explore?search=graphic"><h4>Graphic & Design</h4></a>
             <a href="/explore"><h4>Photography & Videography</h4></a>
             <a href="/explore"><h4>Video & Photo Editing</h4></a>
             <a href="/explore"><h4>Gaming</h4></a>
@@ -30,4 +30,3 @@
         </div>
     </div>
 </footer>
-    

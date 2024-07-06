@@ -5,7 +5,7 @@
             <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Title</h2>
+                    <h2 class=" font-bold">Title</h2>
                     <p>The title of your service is an important aspect that can influence potential customers to click on your service and learn more about what you offer. A great title should be descriptive, catchy, and unique. Make sure that it accurately reflects what your service provides, and try to use language that is attention-grabbing and memorable.</p>
                 </div>
                 <input type="text" name="title_service" value="{{old('title_service')}}" placeholder="Example: Jasa membuat website menggunakan html" class="input">
@@ -13,7 +13,7 @@
                     <p class="text-red-500 text-xs t-1"> {{$message}} </p>
                 @enderror
             </div>
-            
+
             <div class="input-create">
                 <div class="create-text">
                     <h2>Category</h2>
@@ -70,7 +70,7 @@
                     value="{{old('service_description')}}"
                     rows="10"
                     placeholder="">
-                    
+
                 </textarea>
             </div>
 
@@ -118,7 +118,7 @@
                         @enderror
                     </div>
                 </div>
-                
+
             </div>
 
             <div class="input-create">
@@ -211,7 +211,7 @@
                 <div class="create-text">
                 </div>
                 <div class="time-select">
-                    <input type="number" placeholder="example: 1" class="password" name="service_time2"> 
+                    <input type="number" placeholder="example: 1" class="password" name="service_time2">
                     <select  id="" class="select-time" name="service_units_time2">
                         <option value="Minute">Minute</option>
                         <option value="hour">hour</option>

@@ -1,5 +1,5 @@
-<div id="filter">
-        <div class="fltr">
+<div id="filter" class="">
+        <div class="fltr" class="shadow-md">
             <h3>Categories</h3>
             <li class="list active" data-fiter="all"><h4>Show all</h4></li>
             <li class="list" data-fiter="graphic"><h4>Graphic & Design</h4></li>

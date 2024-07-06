@@ -5,15 +5,15 @@
             <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Title</h2>
+                    <h2 class=" font-bold ">Title</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <input type="text" name="project_name" value="{{old('project_name')}}" placeholder="Example: Jasa membuat website menggunakan html" class="input">
             </div>
-            
+
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Category</h2>
+                    <h2 class=" font-bold">Category</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <select name="project_category" id="service-cate" placeholder="project category" name="project_category" value="{{old('project_category')}}">
@@ -31,7 +31,7 @@
 
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Reference Image</h2>
+                    <h2 class=" font-bold">Reference Image</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <div class="insert-img">
@@ -56,7 +56,7 @@
 
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Description</h2>
+                    <h2 class=" font-bold">Description</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <textarea
@@ -64,7 +64,7 @@
                     value="{{old('item_description')}}"
                     rows="10"
                     placeholder="">
-                    
+
                 </textarea>
             </div>
 
@@ -83,7 +83,7 @@
 
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Starting Price</h2>
+                    <h2 class=" font-bold">Starting Price</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <div class="input-price">
@@ -129,7 +129,7 @@
             </div> -->
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Maximum Price</h2>
+                    <h2 class=" font-bold">Maximum Price</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <div class="input-price">
@@ -141,7 +141,7 @@
 
             <div class="input-create">
                 <div class="create-text">
-                    <h2>Estimated Finish time</h2>
+                    <h2 class=" font-bold">Estimated Finish time</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <div class="time-select">
@@ -161,7 +161,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus veniam dolorem, nulla quaerat distinctio nostrum aut id iste quisquam a nobis quas aspernatur beatae accusantium quam voluptatibus, velit magni alias.</p>
                 </div>
                 <div class="time-select">
-                    <input type="text" placeholder="example: 1" class="password" name="service_time2"> 
+                    <input type="text" placeholder="example: 1" class="password" name="service_time2">
                     <select name="time" id="" class="select-time" name="service_units_time2">
                         <option value="Minute">Minute</option>
                         <option value="hour">hour</option>

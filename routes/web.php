@@ -30,6 +30,9 @@ Route::get('/', [ProductController::class, 'index']);
 // explore page
 Route::get('/explore', [ProductController::class, 'explore']);
 
+// search page
+Route::get('/explore/search', [ProductController::class, 'search']);
+
 // create a product
 Route::get('/CreateService', [ProductController::class, 'create'])->middleware('auth');
 
@@ -58,7 +61,10 @@ Route::post('/projects', [ProjectController::class, 'store'])->name('projects.st
 //show product details
 Route::get('/service-detail/{product}', [ProductController::class, 'show'])->name('service-detail');
 
-//show product details
+// show product details template
+Route::get('/detail-template', [ProductController::class, 'detail'])->name('detail-template');
+
+//show project details
 Route::get('/projectdetails/{project}', [ProjectController::class, 'show'])->name('projectdetails');
 
 // show seller profile
@@ -66,6 +72,9 @@ Route::get('/service-detail/{product}/sellerProfile', [ProductController::class,
 
 // profile page
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
+// tailwind test
+Route::get('/tailwind', [ProductController::class, 'tailwind'])->name('tailwind');
 
 // manage
 Route::get('/manage', [ProfileController::class, 'manage'])->name('manage')->middleware(('auth'));
@@ -91,6 +100,9 @@ Route::delete('/orders/{order}', [ProductController::class, 'destroyFromOrder'])
 // sort products
 Route::get('/explore', [ProductController::class, 'sort'])->name('products.sort');
 
+// sort project
+Route::get('/project', [ProjectController::class, 'sort'])->name('projects.sort');
+
 // add to cart
 Route::post('add_to_cart',[ProductController::class,'addToCart'])->middleware('auth');
 
@@ -109,7 +121,7 @@ Route::get('/order', [ProductController::class, 'order'])->name('order')->middle
 // show register create form
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 
-// create new users 
+// create new users
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 // logout

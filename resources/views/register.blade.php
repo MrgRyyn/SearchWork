@@ -2,7 +2,7 @@
     @include('header')
 
 
-    @include('template._register-form')
+    @include('template._signup')
 
 
     @include('footer')
@@ -80,7 +80,7 @@
         progressCheck[current - 2].classList.remove("active");
         progressText[current - 2].classList.remove("active");
         current -= 1;
-        }); 
+        });
 
         var state = false
         function toggle(){
@@ -92,6 +92,19 @@
             else{
                 document.getElementById("password").setAttribute("type", "text");
                 document.getElementById("eye").style.color= '#5887ef' ;
+                state = true;
+            }
+        }
+
+        function toggle2(){
+            if(state){
+                document.getElementById("password2").setAttribute("type", "password");
+                document.getElementById("eye2").style.color= '#7a797e' ;
+                state = false
+            }
+            else{
+                document.getElementById("password2").setAttribute("type", "text");
+                document.getElementById("eye2").style.color= '#5887ef' ;
                 state = true;
             }
         }

@@ -20,10 +20,9 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'phone_number' => ['required', Rule::unique('users', 'phone_number')],
             'username' => ['required', Rule::unique('users', 'username')],
             'password' => 'required|confirmed|min:6'
-        ]); 
+        ]);
 
             $user = new User;
             $user->name = $request->input('name');
@@ -35,7 +34,7 @@ class UserController extends Controller
             $user->username = $request->input('username');
             $user->password = Hash::make($request->input('password'));
             $user->save();
-            
+
             // user login
             auth()->login($user);
 
@@ -66,12 +65,12 @@ class UserController extends Controller
     // public function authenticate(Request $request)
     // // {
     // // $credentials = $request->only('email', 'password');
-    
+
     // // if (Auth::attempt($credentials)) {
     // //     // Authentication passed...
     // //     return redirect()->intended('/');
     // // }
-    
+
     // // return redirect()->back()->withErrors(['email' => 'Invalid email or password.']);
     // // }
 
@@ -82,15 +81,16 @@ class UserController extends Controller
             'password' => 'required'
         ]);
 
-        if(auth()->attempt(($formFields))) {
+        if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('message', 'You are now login!');
+            return redirect('/')->with('message', 'You are now logged in!');
         }
 
-        return back()->withErrors(['email' => 'Invalid email or Password'])->onlyInput('email');
+        toastr()->error('Invalid email or password.');
+        return back()->withErrors(['email' => 'Invalid email or password'])->onlyInput('email');
     }
 
-    // seller profile 
+    // seller profile
 
 }

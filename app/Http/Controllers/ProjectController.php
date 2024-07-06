@@ -74,4 +74,46 @@ class ProjectController extends Controller
         $products = $user->projects()->get();
         return view('seller-profile', compact('projects'));
     }
+
+    // sort
+    public function sort(Request $request)
+    {
+        $sortBy = $request->input('sort');
+        $searchTerm = $request->input('search');
+        $search2Term = $request->input('search2');
+
+        $query = Project::where(function ($query) use ($searchTerm, $search2Term) {
+            $query->where('project_name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('item_description', 'like', '%' . $searchTerm . '%')
+                ->orWhere('project_category', 'like', '%' . $searchTerm . '%');
+
+            if ($search2Term) {
+                $query->where('kota', 'like', '%' . $search2Term . '%');
+            }
+        });
+
+        switch ($sortBy) {
+            case 'price_asc':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'price_desc':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'created_at_asc':
+                $query->orderBy('created_at', 'asc');
+                break;
+            case 'created_at_desc':
+                $query->orderBy('created_at', 'desc');
+                break;
+            default:
+                // No specific sorting selected, use default ordering
+                $query->orderBy('created_at', 'desc');
+                break;
+        }
+
+        $projects = $query->get();
+
+        return view('findproject', ['projects' => $projects, 'search' => $searchTerm, 'search2' => $search2Term, 'sort' => $sortBy]);
+    }
+
 }

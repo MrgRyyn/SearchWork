@@ -13,7 +13,7 @@
         <div class="press-fltr">
             <h3>Categories</h3>
             <li class="list active" data-fiter="all"><h4>Show all</h4></li>
-            <li class="list" data-fiter="graphic"><h4>Graphic & Design</h4></li>
+            <li class="list" data-fiter="graphic design"><h4>Graphic & Design</h4></li>
             <li class="list" data-fiter="photography"><h4>Photography & Videography</h4></li>
             <li class="list" data-fiter="editing"><h4>Video & Photo Editing</h4></li>
             <li class="list" data-fiter="gaming"><h4>Gaming</h4></li>
@@ -28,9 +28,9 @@
     <section id="service-and-filter">
 
         @include('template._filter')
-        
-        
-        
+
+
+
         @include('template._product2')
 
     </section>
@@ -62,6 +62,6 @@
             })
         })
 
-       
+
     </script>
     <script type="text/javascript" src="sort.js"></script>

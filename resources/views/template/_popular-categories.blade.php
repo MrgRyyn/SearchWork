@@ -1,6 +1,7 @@
-<section id="popular-categories">
+<section id="popular-categories flex items-center justify-center">
+    <div class="flex items-center justify-center">
         <div class="categories-box">
-            <h1>Popular Categories</h1>
+            <h1 class="text-montserrat text-5xl font-bold text-cyan-600">Popular Categories</h1>
             <div class="ctgr-img">
                 <a href="/explore">
                     <div class="image">
@@ -48,4 +49,6 @@
                 </a>
             </div>
         </div>
+    </div>
+
 </section>
